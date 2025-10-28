@@ -1,4 +1,4 @@
-package com.generation.model;
+package com.generation.carona.model;
 
 import java.util.List;
 

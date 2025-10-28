@@ -1,4 +1,4 @@
-package com.generation.carona_backend;
+package com.generation.carona;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
