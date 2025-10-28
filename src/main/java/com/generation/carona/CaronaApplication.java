@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CaronaBackendApplication {
+public class CaronaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CaronaBackendApplication.class, args);
+		SpringApplication.run(CaronaApplication.class, args);
 	}
 
 }

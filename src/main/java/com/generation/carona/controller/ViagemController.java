@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.generation.carona.model.Viagem;
-import com.generation.carona.repository.UsuarioRepository;
 import com.generation.carona.repository.VeiculoRepository;
 import com.generation.carona.repository.ViagemRepository;
 
@@ -36,8 +35,8 @@ public class ViagemController {
 	@Autowired
 	private VeiculoRepository veiculoRepository;
 	
-	@Autowired
-	private UsuarioRepository usuarioRepository;
+	//@Autowired
+	//private UsuarioRepository usuarioRepository;
 	
 	 //Lista todas as postagens
 	@GetMapping

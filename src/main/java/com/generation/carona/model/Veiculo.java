@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,23 +26,21 @@ public class Veiculo {
 	
 	@Column(length = 200)
 	@NotBlank(message = "O atributo modelo é obrigatório!")
-	@Size(min = 2, max = 500, message = "O atributo descrição deve conter no mínimo 10 e no máximo 500 caracteres")
-	
+	@Size(min = 2, max = 500, message = "O atributo modelo deve conter no mínimo 10 e no máximo 500 caracteres")
 	private String modelo;
 	
 	@Column(length = 200)
 	@NotBlank(message = "O atributo placa é obrigatório!")
-	@Size(min = 2, max = 500, message = "O atributo descrição deve conter no mínimo 10 e no máximo 500 caracteres")
-	
+	@Size(min = 2, max = 500, message = "O atributo placa deve conter no mínimo 10 e no máximo 500 caracteres")
 	private String placa;
 	
 	@Column(length = 200)
 	@NotBlank(message = "O atributo foto é obrigatório!")
-	@Size(min = 2, max = 500, message = "O atributo descrição deve conter no mínimo 10 e no máximo 500 caracteres")
+	@Size(min = 2, max = 500, message = "O atributo foto deve conter no mínimo 10 e no máximo 500 caracteres")
 	private String foto;
 	
-	@OneToMany
-	@JsonIgnoreProperties("viagem") //pra não entrar num loop infinito
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = "veiculo", allowSetters = true)
 	private List<Viagem> viagem;
 
 	public Long getId() {
@@ -82,5 +82,4 @@ public class Veiculo {
 	public void setViagem(List<Viagem> viagem) {
 		this.viagem = viagem;
 	}
-	
 }

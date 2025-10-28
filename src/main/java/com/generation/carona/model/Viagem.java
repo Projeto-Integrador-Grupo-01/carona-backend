@@ -28,14 +28,12 @@ public class Viagem {
 		
 		@Column(length = 200)
 		@NotBlank(message = "O atributo destino é obrigatório!")
-		@Size(min = 2, max = 500, message = "O atributo descrição deve conter no mínimo 10 e no máximo 500 caracteres")
-		
+		@Size(min = 2, max = 500, message = "O atributo destino deve conter no mínimo 10 e no máximo 500 caracteres")
 		private String destino;
 		
 		@Column(length = 200)
 		@NotBlank(message = "O atributo partida é obrigatório!")
-		@Size(min = 2, max = 500, message = "O atributo descrição deve conter no mínimo 10 e no máximo 500 caracteres")
-		
+		@Size(min = 2, max = 500, message = "O atributo partida deve conter no mínimo 10 e no máximo 500 caracteres")
 		private String partida;
 		
 		@NotNull(message = "O preço é obrigatório!")
@@ -53,11 +51,11 @@ public class Viagem {
 		private  LocalDateTime tempo;
 		
 		@ManyToOne
-		@JsonIgnoreProperties("veiculo") //pra não entrar num loop infinito
+		@JsonIgnoreProperties("viagem") //pra não entrar num loop infinito
 		private Veiculo veiculo;
 		
 		@ManyToOne
-		@JsonIgnoreProperties("usuario") //pra não entrar num loop infinito
+		@JsonIgnoreProperties("viagem") //pra não entrar num loop infinito
 		private Usuario usuario;
 
 		public Long getId() {

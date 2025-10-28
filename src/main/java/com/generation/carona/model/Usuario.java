@@ -4,7 +4,10 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,6 +31,7 @@ public class Usuario {
 		@Size(max = 5000, message = "O link da foto deve ter no máximo 5000 caracteres")
 		private String foto;
 		
+		@Schema(example = "email@email.com.br")
 		@NotBlank(message = "O email do usuário é obrigatório.")
 		@Email(message = "O email deve ser válido.")
 		private String email;
@@ -36,8 +40,8 @@ public class Usuario {
 		@Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres.")
 		private String senha;
 		
-		@OneToMany
-		@JsonIgnoreProperties("viagem") //pra não entrar num loop infinito
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+		@JsonIgnoreProperties(value = "usuario", allowSetters = true)
 		private List<Viagem> viagem;
 
 		public Long getId() {
@@ -87,5 +91,6 @@ public class Usuario {
 		public void setViagem(List<Viagem> viagem) {
 			this.viagem = viagem;
 		}
+
 
 }
