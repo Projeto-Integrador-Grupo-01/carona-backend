@@ -1,6 +1,7 @@
 package com.generation.carona.controller;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,9 @@ public class VeiculoController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());//se não existir retorna 404 NOT FOUND
 	}
 	
-	//Busca por descrição	
+	//Busca por placa	
 	@GetMapping("/placa/{placa}")
-	public ResponseEntity<List<Veiculo>> getAllByDescricao(@PathVariable String placa){
+	public ResponseEntity<List<Veiculo>> getAllByPlaca(@PathVariable String placa){
 		return ResponseEntity.ok(veiculoRepository.findAllByPlacaContainingIgnoreCase(placa));
 	}
 	
