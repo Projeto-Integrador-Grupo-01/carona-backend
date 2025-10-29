@@ -43,12 +43,12 @@ public class Viagem {
 	    private BigDecimal preco;
 		
 		@Column(length = 200)
-		@NotBlank(message = "O atributo data é obrigatório!")
+		@NotNull(message = "O atributo data é obrigatório!")
 		private  LocalDateTime data;
 		
-		@Column(length = 200)
-		@NotBlank(message = "O atributo tempo é obrigatório!")
-		private  LocalDateTime tempo;
+	
+		@NotNull(message = "O atributo tempo é obrigatório!")
+		private  Double tempo;
 		
 		@ManyToOne
 		@JsonIgnoreProperties("viagem") //pra não entrar num loop infinito
@@ -98,11 +98,11 @@ public class Viagem {
 			this.data = data;
 		}
 
-		public LocalDateTime getTempo() {
+		public Double getTempo() {
 			return tempo;
 		}
 
-		public void setTempo(LocalDateTime tempo) {
+		public void setTempo(Double tempo) {
 			this.tempo = tempo;
 		}
 

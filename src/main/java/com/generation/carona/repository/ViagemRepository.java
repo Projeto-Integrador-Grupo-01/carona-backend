@@ -8,6 +8,7 @@ import com.generation.carona.model.Viagem;
 
 public interface ViagemRepository extends JpaRepository<Viagem, Long>{
 	
-	public List<Viagem> findAllByDestinoContainingIgnoreCase(String destino);
+	List<Viagem> findAllByDestinoContainingIgnoreCase(String destino);
+	List<Viagem> findAllByPartidaContainingIgnoreCase(String partida);
 	
 }
