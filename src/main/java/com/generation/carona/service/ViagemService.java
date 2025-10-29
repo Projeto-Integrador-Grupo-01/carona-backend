@@ -69,4 +69,17 @@ public class ViagemService {
 
         viagemRepository.deleteById(id);
     }
+    
+    public Double calcularTempoViagem(Double distanciaKm, Double velocidadeMediaKmH) {
+        if (distanciaKm == null || distanciaKm <= 0) {
+            throw new IllegalArgumentException("A distância deve ser maior que zero.");
+        }
+
+        if (velocidadeMediaKmH == null || velocidadeMediaKmH <= 0) {
+            throw new IllegalArgumentException("A velocidade média deve ser maior que zero.");
+        }
+
+        // tempo em horas = distancia / velocidade média
+        return distanciaKm / velocidadeMediaKmH;
+    }
 }
