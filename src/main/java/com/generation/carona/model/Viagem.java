@@ -1,7 +1,7 @@
 package com.generation.carona.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -44,7 +44,7 @@ public class Viagem {
 		
 		@Column(length = 200)
 		@NotNull(message = "O atributo data é obrigatório!")
-		private  LocalDateTime data;
+		private  LocalDate data;
 		
 	
 		@NotNull(message = "O atributo tempo é obrigatório!")
@@ -90,11 +90,11 @@ public class Viagem {
 			this.preco = preco;
 		}
 
-		public LocalDateTime getData() {
+		public LocalDate getData() {
 			return data;
 		}
 
-		public void setData(LocalDateTime data) {
+		public void setData(LocalDate data) {
 			this.data = data;
 		}
 
